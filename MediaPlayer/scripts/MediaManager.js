@@ -4,23 +4,23 @@ export default class MediaManager{
   constructor (){
     //do the firebase thing, login, connect
     this.config (){
-      apiKey: "AIzaSyCZagTzlWEjCK_ycyd7uR5g7MvHI7T2vEA",
-      authDomain: "MediaPlayer.firebaseapp.com",
-      databaseURL: "https://MediaPlayer.firebaseio.com",
-      projectId: "MediaPlayer",
-      storageBucket: "MediaPlayer.appspot.com",
+      apiKey: "AIzaSyC5yYVDRnP67JDCEdDPftkywdpGtVxduP0",
+      authDomain: "MediaPlayer1.firebaseapp.com",
+      databaseURL: "https://MediaPlayer1.firebaseio.com",
+      projectId: "mediaplayer1-82a56",
+      storageBucket: "MediaPlayer1.appspot.com",
       messagingSenderId: "sender-id",
       appId: "app-id",
       measurementId: "G-measurement-id",
     }
     firebase.initializeApp(firebaseConfig);
-    this.songData = firebase.firestore();
+    this.db = firebase.firestore();
     this.media = firebase.firestorage();
   }
   //methods to fetch the song/playlist
   fetchPlayList(PlayListName = "all") {
   // this is all gonna be asynchronous...
-    let iPromiseToBeBack = new Promise (( resolve, reject))
+    return new Promise (( resolve, reject))
     let aPlayList = [];
     let mediaList = this.songData.data.collection( "media" );
     let query = mediaList.where("playlistname","==", playlistName);
@@ -33,7 +33,6 @@ export default class MediaManager{
       resolve( aPlayList );
     });
 
-    resolve ( aPlayList );
-    return iPromiseToBeBack;
+    resolve ( aPlayList )
   }
 }
