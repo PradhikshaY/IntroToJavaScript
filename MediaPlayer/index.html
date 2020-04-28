@@ -7,6 +7,8 @@
         <link rel="stylesheet" type="text/css" href="css/style.css" />
         <link rel="stylesheet" type="text/css" href="css/mobile.css" />
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
          <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -21,6 +23,8 @@
 
         <script type="text/javascript" src="//cdnjs.cloudfare.com/ajax/libs/buzz/1.2.1/min.js"></script>
     </head>
+
+
 
     <body>
         <section id="app-container" class="flex-container">
@@ -64,32 +68,28 @@
                 </div>
             </div>
 
-            <section id="controls" class="">
-                <div id="toolbar" class="">
-                    <button id="beginning">first</button>
-                    <button id="rewind">rewind</button>
-                    <button id="play">play</button>
-                    <button id="stop">stop</button>
-                    <button id="forward">fast forward</button>
-                    <button id="end">last</button>
-
-                    <input type="checkbox" id="shuffle">
-                    <label for="shuffle">Shuffle</label>
-
-                    <span id="repeat">
-                        <input type="radio" id="repeat0" name="repeat" checked="checked">
-                        <label for="repeat0">No Repeat</label>
-                        <input type="radio" id="repeat1" name="repeat">
-                        <label for="repeat1">Once</label>
-                        <input type="radio" id="repeatall" name="repeat">
-                        <label for="repeatall">All</label>
-                    </span>
+            <div class="controls-bar">
+                <section id="controls">
+                  <span class="fa fa-random shuffle"></span>
+                  <span class="fa fa-fast-backward previous"></span>
+                  <span class="fa fa-play play-pause"></span>
+                  <span class="fa fa-fast-forward next"></span>
+                  <button class=btn"><i class="fa fa-repeat repeat on"></i></button>
+              </section>
+                
+                <div id="volume">
+                  <span class="fa fa-volume-down"></span>
+                  <input class="volume-slider range" type="range" max="1" min="0" step="0.01" value="0.8">
+                  <span class="fa fa-volume-up"></span>
                 </div>
-                <div class="clear"></div>
-            </section>
-            <div id="virtual-console"><!-- dynamic updates --></div>
-        </section>
+              </div>
 
+            <div id="virtual-console">
+            </div>
+
+          
+
+          <audio id="player"></audio>
         <script type="module" src="scripts/index.js"></script>
 
     </body>
