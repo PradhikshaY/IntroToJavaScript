@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!-- Copyright (C) 2020 Pradhiksha, All Rights Reserved -->
+<html>
+    <head>
+      <title>Media Player</title>
+      <link rel="stylesheet" type="text/css" href="css/styles.css" />
+      <link rel="stylesheet" type="text/css" href="css/stylebase.css" />
+      <!-- JQuery -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+
+      <script type="module" src="index.js"></script>
+      
+      <!-- Font Awesome -->
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      <!-- Buzz Script -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/buzz/1.2.1/buzz.min.js"></script>
+    </head>
+
+
+    
+    <body>
+      <section id="app-container" class="flex-container">
+          <header>
+              <div id="hamburger-menu"></div>`
+              <h2>Media Player</h2>
+              <div id="extras-btn"></div>
+          </header>
+
+          <div id="left-menu" class="left">
+              <div id="sidebar-accordion">
+
+                  <div class="group">
+                      <h3>Music Player</h3>
+                  </div>
+
+                  <div class="group">
+                      <h3>Pradhiksha Y</h3>
+                  </div>
+              </div>
+          
+
+        <div class="flex-item1">
+          <div id="app-area">
+            <section id="current-track-area">
+                <div id="now-playing" class="info-area">
+                    <div id="album-image" class=""></div>
+                    <input type="text" id="track-name"  class="playing-field" name="track-name"  readonly="true" value="Said the Whale" />
+                    <input type="text" id="track-album" class="playing-field" name="track-album" readonly="true" value="Mother" />
+                    <input type="text" id="track-year"  class="playing-field" name="track-year"  readonly="true" value="2013" /><br />
+                      <label id='track-duration'>00:00</label>
+                </div>
+
+                <ul id="the-playlist" class="list">
+                </ul>
+            </section>
+          </div>
+        </div>
+
+        <section>
+          <form id="playlist-item" class="data-entry">
+            <label>Track Name</label>
+            <input type="text" name="track-name-entry" value=""><br />
+            <label>Track Album</label>
+            <input type="text" name="track-album-entry" value=""><br />
+            <label>Track Year</label>
+            <input type="text" name="track-album-entry" value=""><br />
+            <input type="submit" name="Submit" value="Save">
+          </form>
+        </section>
+<!---------------------------------------------->
+        <div class="footer">
+          <div class="controls-bar">
+            <div class="controls">
+              <button class="btn"><i class="fa fa-random shuffle"></i></button>
+              <button class="btn"><i class="fa fa-fast-backward previous"></i></button>
+              <button class="btn"><i class="fa fa-play play-pause"></i></button>
+              <button class="btn"><i class="fa fa-fast-forward next"></i></button>
+              <button class="btn"><i class="fa fa-repeat repeat on"></i></button>
+            </div>
+
+            <div id="volume">
+             <span class="fa fa-volume-down"></span>
+             <input class="slider" type="range" max="1" min="0" step="0.01"value="0.8">
+             <span class="fa fa-volume-up"></span>
+            </div>
+
+          </div>
+        </div>
+        <div id="virtual-console"><!-- dynamic updates --></div>
+      </section>
+      <audio id="player"></audio>
+       
+    </body>
+</html>

@@ -1,6 +1,6 @@
 /**
  * @copyright: (C) 2020 Vancouver Film School.  All Rights Reserved.
- * @author:    Your Name {@link mailto:ddXXname@vfs.com}
+ * @author:    Your Name {@link mailto:dd46Pradhiksha@vfs.com}
  * @version:   1.0
  */
 'use strict';
@@ -14,16 +14,32 @@ export default class App {
         // build a playlist
         this.thePlayList = new PlayList();
         this.thePlayList.populate();
-        this.currentTrack = this.thePlayList.first();
+        this.currentTrack = new buzz.sound('../media/Stay With You.mp3');
 
-        this.currentSongName = "Woo hoo";
+        // Debug playlist editor handler
+        $("playlist-item").on('submit', event => this.addToPlayList(event));
 
         // handle user input
-        document.querySelector("#play")
-            .addEventListener("click", event => this.updateCurrentTrack("Pyromania", "Play Pressed"));
+        $("#beginning").on("click", event => this.defaultHandler(event));
+        $("#rewind").on("click", event => this.defaultHandler(event));
+        $("#play").on("click", event => this.handlePlay(event));
+        $("#stop").on("click", event => this.handleStop(event));
+        $("#forward").on("click", event => this.defaultHandler(event));
+        $("#end").on("click", event => this.defaultHandler(event));
+    }
 
-        document.querySelector("#stop")
-            .addEventListener("click",  event => this.handleStop( event ) );
+    addToPlayList(event) {
+        event.preventDefault();
+        // grab the input data into some object
+        let name = $('input[name="track-name-entry"]').val();
+        let album = $('input[name="track-album-entry"]').val();
+        let year = $('input[name="track-year-entry"]').val();
+
+        $("#the-playlist").append(`<li id="item-1"> ${year} ${name} - ${album} </li>`); 
+    }
+
+    defaultHandler(event) {
+        $("virtual-console").html("something Happened");
     }
 
     handleStop( event ) {
@@ -32,12 +48,15 @@ export default class App {
         // Dont change name of the song & stop playing
     }
 
+    handlePlay( event ){
+        this.currentTrack.play();
+    }
     updateCurrentTrack( songName = "", userMsg = "Nothing happened") {
 
         this.currentSongName = songName;
-        document.querySelector("#virtual-console").innerHTML = userMsg
+        $("#virtual-console").html(userMsg); 
         console.log( userMsg );
-        document.querySelector("#track-name").value = this.currentSongName;
+        $("#track-name").val( this.currentSongName );
     }
 
     run() {
