@@ -1,2 +1,3 @@
 # IntroToJavaScript
-VFS Digital Design intro to JavaScript base templates
+VFS Digital Design: dd46 Pradhiksha Yogasaravanan
+https://github.com/PradhikshaY/IntroToJavaScript/tree/dd46Pradhiksha
