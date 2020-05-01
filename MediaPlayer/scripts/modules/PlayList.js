@@ -1,6 +1,6 @@
 /**
- * @copyright: (C) 2020 Scott Henshaw.  All Rights Reserved.
- * @author:    Scott Henshaw {@link mailto:ddXXname@vfs.com}
+ * @copyright: (C) 2020 Pradhiksha.  All Rights Reserved.
+ * @author:    Pradhiksha {@link mailto:dd46pradhiksha@vfs.com}
  * @version:   1.0
  */
 'use strict';
@@ -13,23 +13,23 @@ export default class PlayList {
     constructor(){
         this.playList = [];  // a list of Track objects
         this.current = -1; //this is out of bounds until playlist is loaded
-        this.currentTrack = {}; //This should be a track object 
+        this.currentTrack = null; //This should be a track object
+
+        this.mediaMgr = new MediaManager();
+
     }
 
    populate() {
         // somehow make a list of tracks
-
-        //go ask Media Manager to get media files 
-        this.playList.push( new Track('../media/Going Home.mp3'));
-        /*
-        this.playList = this.MediaManager.fetchPlayList("PlayListName")
-            .then(theList => {
-                this.playList = theList;
-                this.first();)
-            .catch ( error => console.log("error"))
-            }
-    }
-
+        return new Promise( async ( resolve, reject ) => {
+            this.playList = await this.mediaMgr.fetchPlayList().catch( error => {
+                console.log(error)
+                reject (error)
+             )};
+            this.first()
+            resolve( this.playList )
+        })
+   }
 
     first() {
         this.current = 0;
@@ -59,6 +59,9 @@ export default class PlayList {
         }
 
         this.current++;
+        if(this.current >= this.playList.length)
+            this.current = this.playList.length - 1;
+        
         this.currentTrack = this.PlayList[this.current];
     }
 

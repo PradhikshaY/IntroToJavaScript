@@ -4,7 +4,6 @@
 }
 
 
-
 .header{
   text-align: center;
   font-family: Helvetica, sans-serif;
@@ -95,7 +94,7 @@ header {
   appearance: none;
   width: 15px;
   height: 15px;
-  border-radius: 50%; 
+  border-radius: 50%;
   background: dodgerblue;
   cursor: pointer;
 }
@@ -116,4 +115,3 @@ header {
   border: 2px solid white;
   padding: 2px;
 }
-© 2020 GitHub, Inc.

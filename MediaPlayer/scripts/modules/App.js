@@ -1,20 +1,27 @@
 /**
- * @copyright: (C) 2020 Vancouver Film School.  All Rights Reserved.
- * @author:    Your Name {@link mailto:dd46Pradhiksha@vfs.com}
+ * @copyright: (C) 2020 Pradhiksha.  All Rights Reserved.
+ * @author:    Pradhiksha {@link mailto:dd46pradhiksha@vfs.com}
  * @version:   1.0
  */
 'use strict';
 
-import PlayList from './PlayList.js';
+import PlayList from './PlayList';
 
 export default class App {
 
     constructor(device = 'web') {
 
+        this.trackId = 0;
+
         // build a playlist
         this.thePlayList = new PlayList();
         this.thePlayList.populate();
-        this.currentTrack = new buzz.sound('../media/Stay With You.mp3');
+            .then(playList => {
+                for(let song of playList) {
+                let entryMarkup = this.generatePlaylistEntry(year, song.trackName, album);
+                $("#the-playlist").append(entryMarkup);
+                }
+            })
 
         // Debug playlist editor handler
         $("playlist-item").on('submit', event => this.addToPlayList(event));
@@ -25,7 +32,13 @@ export default class App {
         $("#play").on("click", event => this.handlePlay(event));
         $("#stop").on("click", event => this.handleStop(event));
         $("#forward").on("click", event => this.defaultHandler(event));
+        $("#next").on("click", event => this.nextSong(event));
         $("#end").on("click", event => this.defaultHandler(event));
+    }
+
+    generatePlaylistEntry( id, year, name, album ){
+
+        return `<li id="item-${this.trackId++}"> ${year} ${name} - ${album}</li>`;
     }
 
     addToPlayList(event) {
@@ -35,7 +48,8 @@ export default class App {
         let album = $('input[name="track-album-entry"]').val();
         let year = $('input[name="track-year-entry"]').val();
 
-        $("#the-playlist").append(`<li id="item-1"> ${year} ${name} - ${album} </li>`); 
+        let entryMarkup = this.generatePlaylistEntry(year, name, album);
+        $("#the-playlist").append(entryMarkup);
     }
 
     defaultHandler(event) {
@@ -45,16 +59,17 @@ export default class App {
     handleStop( event ) {
 
         this.updateCurrentTrack("Hello", "Stop pressed");
+        this.playList.stop();
         // Dont change name of the song & stop playing
     }
 
     handlePlay( event ){
-        this.currentTrack.play();
+        this.playList.play();
     }
     updateCurrentTrack( songName = "", userMsg = "Nothing happened") {
 
         this.currentSongName = songName;
-        $("#virtual-console").html(userMsg); 
+        $("#virtual-console").html(userMsg);
         console.log( userMsg );
         $("#track-name").val( this.currentSongName );
     }

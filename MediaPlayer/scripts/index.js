@@ -1,11 +1,11 @@
 /**
- * @copyright: (C) 2020 Vancouver Film School.  All Rights Reserved.
- * @author:    Pradhiksha {@link mailto:dd46Pradhiksha@vfs.com}
+ * @copyright: (C) 2020 Pradhiksha.  All Rights Reserved.
+ * @author:    Pradhiksha {@link mailto:dd46pradhiksha@vfs.com}
  * @version:   1.0
  */
 'use strict';
 
-import App from './App.js';
+import App from './modules/App.js';
 
 (function Main() {
 

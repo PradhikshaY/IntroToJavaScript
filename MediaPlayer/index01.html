@@ -3,23 +3,36 @@
 <html>
     <head>
       <title>Media Player</title>
+      <!-- Style Sheet -->
       <link rel="stylesheet" type="text/css" href="css/styles.css" />
       <link rel="stylesheet" type="text/css" href="css/stylebase.css" />
+
       <!-- JQuery -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+      <!-- Firebase -->
+      <script src="//www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
+
+      <script src="//www.gstatic.com/firebasejs/7.13.2/firebase-database.js"></script>
+      <script src="//www.gstatic.com/firebasejs/7.13.2/firebase-firestore.js"></script>
+      <script src="//www.gstatic.com/firebasejs/7.13.2/firebase-storage.js"></script>
+
+      <!-- Lib Scripts -->
+      <script src="scripts/lib/jsmediatags.min.js"></script>
+      <script src="scripts/lib/buzz.min.js"></script>
+      <script src="scripts/lib/jdataview.js"></script>
+
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 
-      <script type="module" src="index.js"></script>
-      
       <!-- Font Awesome -->
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
       <!-- Buzz Script -->
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/buzz/1.2.1/buzz.min.js"></script>
+
+
     </head>
 
-
-    
     <body>
       <section id="app-container" class="flex-container">
           <header>
@@ -91,6 +104,10 @@
         <div id="virtual-console"><!-- dynamic updates --></div>
       </section>
       <audio id="player"></audio>
-       
+
+       <!-- Javascript File -->
+
+       <script type="module" src="./scripts/index.js"></script>
+
     </body>
 </html>
